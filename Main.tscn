@@ -1,0 +1,28 @@
+[gd_scene format=1]
+
+[node name="Main" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 115.0
+margin/top = 11.0
+margin/right = -6.0
+margin/bottom = -9.0
+custom_colors/font_color = Color( 0.265625, 1, 0, 1 )
+text = "AMAZON IS GREEN"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
