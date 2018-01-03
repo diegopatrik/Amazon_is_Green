@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Sprites/floresta.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/rio.png" type="Texture" id=2]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = Vector2Array(  )
+polygons = [  ]
+outlines = [  ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="Tileset" type="Node2D"]
+
+z/relative = false
+
+[node name="floresta" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="floresta"]
+
+transform/pos = Vector2( 16, 16 )
+transform/scale = Vector2( 0.5, 0.5 )
+navpoly = SubResource( 1 )
+enabled = true
+
+[node name="rio" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="NavigationPolygonInstance1" type="NavigationPolygonInstance" parent="rio"]
+
+transform/pos = Vector2( 16, 16 )
+transform/scale = Vector2( 0.5, 0.5 )
+navpoly = SubResource( 1 )
+enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rio"]
+
+editor/display_folded = true
+transform/pos = Vector2( 16, 16 )
+transform/scale = Vector2( 0.5, 0.5 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rio/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+
