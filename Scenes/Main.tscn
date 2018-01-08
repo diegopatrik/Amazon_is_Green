@@ -1,54 +1,20 @@
 [gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://Scenes/Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Scenes/Base.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=3]
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Node
-
-#area de floresta
-var floresta = 100
-#dinheiro disponível
-var dinheiro = 10000
-
-onready var txt_floresta = get_node(\"./HUD/Floresta\")
-onready var txt_dinheiro = get_node(\"./HUD/Dinheiro\")
-
-var cena_helicoptero = preload(\"res://Scenes/Helicoptero.tscn\")
-var position = Vector2(448,288)
-
-func _ready():
-	randomize()
-	txt_dinheiro.set_text(\"dinheiro disponivel: \" + str(dinheiro))
-	txt_floresta.set_text(\"area preservada: \" + str(floresta) + \"%\")
-
-func _on_Button_pressed():
-	var helicoptero = cena_helicoptero.instance()
-	if helicoptero.get_valor() <= dinheiro:
-		add_child(helicoptero)
-		helicoptero.set_pos(position + Vector2(-32,0))
-		if(helicoptero.get_pos().x <= 352):
-			position = Vector2(448,288)
-		else:
-			position = helicoptero.get_pos()
-		dinheiro -= helicoptero.get_valor()
-		txt_dinheiro.set_text(\"dinheiro disponivel: \" + str(dinheiro))
-"
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
 
 [node name="Main" type="Node"]
 
-script/script = SubResource( 1 )
+script/script = ExtResource( 1 )
 
-[node name="Navigation2D" type="Navigation2D" parent="."]
+[node name="nav" type="Navigation2D" parent="."]
 
-editor/display_folded = true
-
-[node name="TileMap" type="TileMap" parent="Navigation2D"]
+[node name="TileMap" type="TileMap" parent="nav"]
 
 mode = 0
-tile_set = ExtResource( 1 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 32, 32 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -66,7 +32,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Base" parent="." instance=ExtResource( 2 )]
+[node name="base" parent="." instance=ExtResource( 3 )]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -78,6 +44,7 @@ scale = Vector2( 1, 1 )
 
 [node name="Panel" type="Panel" parent="HUD"]
 
+visibility/opacity = 0.8
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -135,7 +102,7 @@ max_lines_visible = -1
 
 [node name="Button_direita" type="Button" parent="HUD"]
 
-visibility/opacity = 0.8
+visibility/opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -152,7 +119,7 @@ flat = false
 
 [node name="Button_baixo" type="Button" parent="HUD"]
 
-visibility/opacity = 0.8
+visibility/opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -169,7 +136,7 @@ flat = false
 
 [node name="Button_cima" type="Button" parent="HUD"]
 
-visibility/opacity = 0.8
+visibility/opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -186,7 +153,7 @@ flat = false
 
 [node name="Button_esquerda" type="Button" parent="HUD"]
 
-visibility/opacity = 0.8
+visibility/opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -207,7 +174,7 @@ transform/pos = Vector2( 512, 288 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.8, 0.8 )
+zoom = Vector2( 2, 2 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -220,7 +187,21 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-script/script = ExtResource( 3 )
+script/script = ExtResource( 4 )
+
+[node name="tempo_restante" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 300.0
+one_shot = false
+autostart = false
+
+[node name="gerador_desmatamento" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = true
 
 [connection signal="pressed" from="HUD/Button" to="." method="_on_Button_pressed"]
 
@@ -231,5 +212,7 @@ script/script = ExtResource( 3 )
 [connection signal="pressed" from="HUD/Button_cima" to="Camera2D" method="_on_Button_cima_pressed"]
 
 [connection signal="pressed" from="HUD/Button_esquerda" to="Camera2D" method="_on_Button_esquerda_pressed"]
+
+[connection signal="timeout" from="gerador_desmatamento" to="." method="_on_gerador_desmatamento_timeout"]
 
 

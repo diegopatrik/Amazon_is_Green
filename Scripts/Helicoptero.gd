@@ -24,16 +24,16 @@ func _ready():
 	set_process_input(true)
 
 func _input(event):
-	if event.is_action_pressed("mouse_click") and selected:
-		points = get_node("../Navigation2D").get_simple_path(get_pos(), get_global_mouse_pos(), false)
+	if event.is_action_pressed("mouse_click") and selected and ( Globals.get("selected_now") == self.get_name() ):
+		points = get_node("../nav").get_simple_path(get_pos(), get_global_mouse_pos(), false)
 		destino = get_global_mouse_pos()
 
 func _fixed_process(delta):
 	
 	#verifica se há desmatamento
 	#trocar posteriormente por detecção de colisão
-	var cell = get_node("../Navigation2D/TileMap").world_to_map(get_global_pos())
-	if(get_node("../Navigation2D/TileMap").get_cell(cell.x, cell.y)):
+	var cell = get_node("../nav/TileMap").world_to_map(get_global_pos())
+	if(get_node("../nav/TileMap").get_cell(cell.x, cell.y)):
 		print("achou terra")
 	# refresh the points in the path
 	# if the path has more than one point
@@ -56,9 +56,10 @@ func _draw():
 	# if there are points to draw
 	if points.size() > 2:
 		for p in points:
-			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
+			draw_circle(p - get_global_pos(), 1, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
 	get_node("KinematicBody2D/Label").set("visibility/visible", true)
+	Globals.set("selected_now", self.get_name())
 	selected = true
 	#update()
