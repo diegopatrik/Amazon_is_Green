@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=4 format=1]
+[gd_resource type="TileSet" load_steps=5 format=1]
 
 [ext_resource path="res://Sprites/floresta.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/terra.png" type="Texture" id=2]
@@ -8,6 +8,12 @@
 vertices = Vector2Array( 15.9862, -15.9895, 15.9862, 16.0105, -16.0138, 16.0105, -16.0138, -15.9895 )
 polygons = [ IntArray( 0, 1, 2, 3 ) ]
 outlines = [ Vector2Array( -16.0138, -15.9895, -16.0138, 16.0105, 15.9862, 16.0105, 15.9862, -15.9895 ) ]
+
+[sub_resource type="NavigationPolygon" id=2]
+
+vertices = Vector2Array( 16.0186, -16.0441, 16.0186, 15.9559, -15.9814, 15.9559, -15.9814, -16.0441 )
+polygons = [ IntArray( 0, 1, 2, 3 ) ]
+outlines = [ Vector2Array( -15.9814, -16.0441, -15.9814, 15.9559, 16.0186, 15.9559, 16.0186, -16.0441 ) ]
 
 [resource]
 
@@ -30,9 +36,9 @@ outlines = [ Vector2Array( -16.0138, -15.9895, -16.0138, 16.0105, 15.9862, 16.01
 1/region = Rect2( 0, 0, 32, 32 )
 1/occluder_offset = Vector2( 16, 16 )
 1/navigation_offset = Vector2( 16, 16 )
-1/navigation = SubResource( 1 )
+1/navigation = SubResource( 2 )
 1/shape_offset = Vector2( 0, 0 )
-1/shapes = [  ]
+1/shapes = [ null ]
 1/one_way_collision_direction = Vector2( 0, 0 )
 1/one_way_collision_max_depth = 0.0
 
