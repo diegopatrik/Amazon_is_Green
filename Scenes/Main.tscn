@@ -168,6 +168,20 @@ shortcut = null
 text = "<<"
 flat = false
 
+[node name="Tempo" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 964.0
+margin/top = 22.0
+margin/right = 1004.0
+margin/bottom = 36.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 transform/pos = Vector2( 512, 288 )
@@ -194,7 +208,7 @@ script/script = ExtResource( 4 )
 process_mode = 1
 wait_time = 300.0
 one_shot = false
-autostart = false
+autostart = true
 
 [node name="gerador_desmatamento" type="Timer" parent="."]
 
@@ -212,6 +226,8 @@ autostart = true
 [connection signal="pressed" from="HUD/Button_cima" to="Camera2D" method="_on_Button_cima_pressed"]
 
 [connection signal="pressed" from="HUD/Button_esquerda" to="Camera2D" method="_on_Button_esquerda_pressed"]
+
+[connection signal="timeout" from="tempo_restante" to="." method="_game_over"]
 
 [connection signal="timeout" from="gerador_desmatamento" to="." method="_on_gerador_desmatamento_timeout"]
 
