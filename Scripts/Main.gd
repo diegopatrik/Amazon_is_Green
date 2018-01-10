@@ -1,7 +1,11 @@
 extends Node
 
 #area de floresta
-var floresta = 100
+var floresta = 100.0
+
+#tamanho do mapa em qnt de cells
+var floresta_size = 2304
+
 #dinheiro disponível
 var dinheiro = 10000
 
@@ -28,13 +32,14 @@ func _converte_seg_min(tempo_em_seg):
 	var minutos = tempo_em_seg / 60
 	var segundos = tempo_em_seg % 60
 	
-	print([minutos, segundos])
+	#print([minutos, segundos])
 	return [minutos, segundos]
 	
 
 func _process(delta):
 	var res_tempo = _converte_seg_min(int(tempo.get_time_left()))
 	txt_tempo.set_text( str( " %02d : %02d" % [res_tempo[0], res_tempo[1]] ) )
+	txt_floresta.set_text("area preservada: %.1f" % [floresta] + "%")
 
 func _on_Button_pressed():
 	var helicoptero = cena_helicoptero.instance()
@@ -62,7 +67,10 @@ func _on_gerador_desmatamento_timeout():
 	var d_pos = map.map_to_world(Vector2(x_pos,y_pos))
 	var desmatamento = cena_desmatamento.instance()
 	desmatamento.set_pos(d_pos)
-	print("gerou" + str(Vector2(x_pos,y_pos)))
+	#print("gerou" + str(Vector2(x_pos,y_pos)))
+	
+	#0.043402777777778 representa 1% da area de floresta
+	floresta -= 0.043402777777778
 
 func _game_over():
 	pass # replace with function body
