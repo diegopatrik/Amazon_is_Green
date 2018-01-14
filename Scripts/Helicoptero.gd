@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 var valor = 500 setget get_valor
 
@@ -30,6 +30,9 @@ func _input(event):
 
 func _fixed_process(delta):
 	
+	if(is_colliding()):
+		print(get_collider().get_name())
+	
 	#verifica se há desmatamento
 	#trocar posteriormente por detecção de colisão
 	var cell = get_node("../nav/TileMap").world_to_map(get_global_pos())
@@ -47,7 +50,7 @@ func _fixed_process(delta):
 		else:
 			points.remove(0)
 			selected = false
-			get_node("KinematicBody2D/Label").set("visibility/visible", false)
+			get_node("Label").set("visibility/visible", false)
 			#set_linear_velocity(Vector2(0, 0)) # close enough - stop moving
 			#print("chegou ao destino")
 		update() # we update the node so it has to draw it self again
@@ -59,7 +62,7 @@ func _draw():
 			draw_circle(p - get_global_pos(), 1, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
-	get_node("KinematicBody2D/Label").set("visibility/visible", true)
+	get_node("Label").set("visibility/visible", true)
 	Globals.set("selected_now", self.get_name())
 	selected = true
 	#update()

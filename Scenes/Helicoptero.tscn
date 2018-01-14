@@ -8,12 +8,7 @@
 custom_solver_bias = 0.0
 radius = 59.7562
 
-[node name="Helicóptero" type="Node2D"]
-
-script/script = ExtResource( 1 )
-speed = 60
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="Helicóptero" type="KinematicBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -22,20 +17,21 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
+script/script = ExtResource( 1 )
+speed = 60
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
-
-transform/scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 transform/scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
+
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 anchor_mode = 1
 rotating = false
@@ -54,7 +50,7 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 
-[node name="TextureButton" type="TextureButton" parent="KinematicBody2D"]
+[node name="TextureButton" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -70,7 +66,7 @@ shortcut = null
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="Label" type="Label" parent="KinematicBody2D"]
+[node name="Label" type="Label" parent="."]
 
 visibility/visible = false
 focus/ignore_mouse = true
@@ -86,6 +82,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[connection signal="pressed" from="KinematicBody2D/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 
 

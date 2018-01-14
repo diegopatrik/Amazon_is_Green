@@ -1,22 +1,13 @@
 extends Camera2D
 
-#código para mover e limitar a câmera
+var Event
+var t_origem = Vector2()
+#código para mover a câmera
 
 func _ready():
-	pass
+	set_process_input(true)
 
-func _on_Button_direita_pressed():
-	if get_pos().x < 1024:
-		set_pos(get_pos() + Vector2(64,0))
-
-func _on_Button_baixo_pressed():
-	if get_pos().y < 576:
-		set_pos(get_pos() + Vector2(0,64))
-
-func _on_Button_cima_pressed():
-	if get_pos().y > 0:
-		set_pos(get_pos() + Vector2(0,-64))
-
-func _on_Button_esquerda_pressed():
-	if get_pos().x > 0:
-		set_pos(get_pos() + Vector2(-64,0))
+func _input(event):
+	Event = make_input_local(event)
+	if Event.type == InputEvent.SCREEN_DRAG:
+		set_pos(get_pos() + Event.pos)
