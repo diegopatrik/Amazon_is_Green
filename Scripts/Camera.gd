@@ -7,7 +7,5 @@ var t_origem = Vector2()
 func _ready():
 	set_process_input(true)
 
-func _input(event):
-	Event = make_input_local(event)
-	if Event.type == InputEvent.SCREEN_DRAG:
-		set_pos(get_pos() + Event.pos)
+func _on_SwipeDetector_swiped( gesture ):
+	set_pos(gesture.last_point())
