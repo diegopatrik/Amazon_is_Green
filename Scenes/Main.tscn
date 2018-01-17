@@ -130,7 +130,7 @@ limit/bottom = 864
 drag_margin/h_enabled = false
 drag_margin/v_enabled = false
 smoothing/enable = true
-smoothing/speed = 2.0
+smoothing/speed = 1.0
 drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
@@ -170,6 +170,8 @@ one_shot = false
 autostart = true
 
 [connection signal="pressed" from="HUD/Button" to="." method="_on_Button_pressed"]
+
+[connection signal="swipe_updated" from="Camera2D/SwipeDetector" to="Camera2D" method="_on_SwipeDetector_swipe_updated"]
 
 [connection signal="swiped" from="Camera2D/SwipeDetector" to="Camera2D" method="_on_SwipeDetector_swiped"]
 
