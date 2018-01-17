@@ -9,7 +9,6 @@ func _ready():
 
 func _on_SwipeDetector_swiped( gesture ):
 	set_global_pos(gesture.last_point())
-	print(gesture.get_distance())
 
 func _on_SwipeDetector_swipe_updated( partial_gesture ):
 	set_global_pos(partial_gesture.last_point())
