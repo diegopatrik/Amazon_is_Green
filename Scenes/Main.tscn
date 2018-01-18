@@ -46,26 +46,28 @@ scale = Vector2( 1, 1 )
 
 [node name="Panel" type="Panel" parent="HUD"]
 
-visibility/opacity = 0.8
+editor/display_folded = true
+visibility/opacity = 0.5
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 687.0
-margin/top = 422.0
-margin/right = 983.0
-margin/bottom = 561.0
+margin/left = 357.0
+margin/top = 424.0
+margin/right = 653.0
+margin/bottom = 563.0
 
-[node name="Button" type="Button" parent="HUD"]
+[node name="Button" type="Button" parent="HUD/Panel"]
 
+visibility/opacity = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 768.0
-margin/top = 480.0
-margin/right = 894.0
-margin/bottom = 500.0
+margin/left = 81.0
+margin/top = 58.0
+margin/right = 207.0
+margin/bottom = 78.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -118,6 +120,7 @@ max_lines_visible = -1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 512, 288 )
 anchor_mode = 1
 rotating = false
@@ -165,11 +168,11 @@ autostart = true
 [node name="gerador_desmatamento" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 10.0
+wait_time = 3.0
 one_shot = false
 autostart = true
 
-[connection signal="pressed" from="HUD/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HUD/Panel/Button" to="." method="_on_Button_pressed"]
 
 [connection signal="swipe_updated" from="Camera2D/SwipeDetector" to="Camera2D" method="_on_SwipeDetector_swipe_updated"]
 

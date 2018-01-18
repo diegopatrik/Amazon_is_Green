@@ -61,8 +61,6 @@ func _on_gerador_desmatamento_timeout():
 	#ao menos se seja contido
 
 	var d = cena_desmatamento.instance()
-	print(d.get_instance_ID())
-	print(d.get_name())
 	add_child(d)
 	
 	#0.043402777777778 representa 1% da area de floresta

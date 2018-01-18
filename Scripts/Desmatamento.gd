@@ -19,7 +19,7 @@ func _ready():
 		var y_pos = floor(rand_range(-9, 26))
 		
 		if(map.get_cell(x_pos, y_pos) != 1):
-			#map.set_cell(x_pos, y_pos, 1)
+			map.set_cell(x_pos, y_pos, 1)
 			var d_pos = map.map_to_world(Vector2(x_pos,y_pos))
 			set_pos(d_pos)
 			achou = true

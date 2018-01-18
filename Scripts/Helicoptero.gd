@@ -36,7 +36,7 @@ func _fixed_process(delta):
 	#verifica se há desmatamento
 	#trocar posteriormente por detecção de colisão
 	var cell = get_node("../nav/TileMap").world_to_map(get_global_pos())
-	if(get_node("../nav/TileMap").get_cell(cell.x, cell.y)):
+	if(get_node("../nav/TileMap").get_cell(cell.x, cell.y) == 1):
 		print("achou terra")
 	# refresh the points in the path
 	# if the path has more than one point
