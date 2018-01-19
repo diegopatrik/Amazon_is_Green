@@ -30,14 +30,6 @@ func _input(event):
 
 func _fixed_process(delta):
 	
-	if(is_colliding()):
-		print(get_collider().get_name())
-	
-	#verifica se há desmatamento
-	#trocar posteriormente por detecção de colisão
-	var cell = get_node("../nav/TileMap").world_to_map(get_global_pos())
-	if(get_node("../nav/TileMap").get_cell(cell.x, cell.y) == 1):
-		print("achou terra")
 	# refresh the points in the path
 	# if the path has more than one point
 	if points.size() > 1 and destino != null:
@@ -59,10 +51,14 @@ func _draw():
 	# if there are points to draw
 	if points.size() > 2:
 		for p in points:
-			draw_circle(p - get_global_pos(), 1, Color(0, 1, 1)) # we draw a circle (convert to global position first)
+			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
 	get_node("Label").set("visibility/visible", true)
 	Globals.set("selected_now", self.get_name())
 	selected = true
 	#update()
+
+func _on_Area2D_body_enter( body ):
+	if body.is_in_group("desmatamento"):
+		print("HHH Desmatamento detectado")

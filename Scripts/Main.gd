@@ -11,9 +11,14 @@ var floresta_size = 2304
 #dinheiro disponível
 var dinheiro = 10000
 
-onready var txt_floresta = get_node("./HUD/Panel/Floresta")
-onready var txt_dinheiro = get_node("./HUD/Panel/Dinheiro")
-onready var txt_tempo = get_node("./HUD/Panel/Tempo")
+#recursos
+var qnt_aeronave = 0
+var qnt_veiculo = 0
+var qnt_agente = 0
+
+onready var txt_floresta = get_node("./HUD/Floresta")
+onready var txt_dinheiro = get_node("./HUD/Dinheiro")
+onready var txt_tempo = get_node("./HUD/Tempo")
 onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
 
@@ -45,6 +50,7 @@ func _on_Button_pressed():
 	var helicoptero = cena_helicoptero.instance()
 	if helicoptero.get_valor() <= dinheiro:
 		add_child(helicoptero)
+		qnt_aeronave += 1
 		helicoptero.set_pos(position + Vector2(-32,0))
 		if(helicoptero.get_pos().x <= 352):
 			position = Vector2(448,288)
