@@ -11,9 +11,9 @@ var floresta_size = 2304
 #dinheiro disponível
 var dinheiro = 10000
 
-onready var txt_floresta = get_node("./HUD/Floresta")
-onready var txt_dinheiro = get_node("./HUD/Dinheiro")
-onready var txt_tempo = get_node("./HUD/Tempo")
+onready var txt_floresta = get_node("./HUD/Panel/Floresta")
+onready var txt_dinheiro = get_node("./HUD/Panel/Dinheiro")
+onready var txt_tempo = get_node("./HUD/Panel/Tempo")
 onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
 
