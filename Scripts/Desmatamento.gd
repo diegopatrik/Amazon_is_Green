@@ -1,15 +1,16 @@
 extends Node2D
 
-var achou
+#indica se achou um lugar viável para desmatar
+var achou = false
 
 onready var map = get_node("../nav/TileMap")
 
 var start_pos = Vector2()
 
-var id setget get_id
-
-func get_id():
-	return id
+#construtor que recebe tamanho
+#do desmatamento
+func _init():
+	pass
 
 func _ready():
 	randomize()

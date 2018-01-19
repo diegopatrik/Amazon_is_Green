@@ -11,6 +11,7 @@ extents = Vector2( 12.8283, 13.0144 )
 "desmatamento",
 ]]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 15.8842, 16.078 )
