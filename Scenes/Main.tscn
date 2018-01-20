@@ -77,6 +77,36 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Aeronaves" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 21.0
+margin/top = 76.0
+margin/right = 153.0
+margin/bottom = 90.0
+text = "aeronaves: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Agentes" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 19.0
+margin/top = 104.0
+margin/right = 151.0
+margin/bottom = 118.0
+text = "agentes: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Tempo" type="Label" parent="HUD"]
 
 focus/ignore_mouse = true

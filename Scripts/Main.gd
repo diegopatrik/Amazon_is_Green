@@ -16,6 +16,8 @@ var qnt_agente = 0
 onready var txt_floresta = get_node("./HUD/Floresta")
 onready var txt_dinheiro = get_node("./HUD/Dinheiro")
 onready var txt_tempo = get_node("./HUD/Tempo")
+onready var txt_aeronaves = get_node("./HUD/Aeronaves")
+onready var txt_agentes = get_node("./HUD/Agentes")
 onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
 
@@ -63,12 +65,14 @@ func _on_gerador_desmatamento_timeout():
 	#TODO lógica do desmatamento que se inicia
 	#num lugar e vai crescendo ao redor
 	#ao menos se seja contido
+	
+	var num = rand_range(1, 50)
 
 	var d = cena_desmatamento.instance()
-	d._construtor(10)
+	d._construtor(num)
 	add_child(d)
 	
-	#0.043402777777778 representa 1% da area de floresta
+	#0.043402777777778 representa 1 cell da area de floresta
 	Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 	contador += 1
 
