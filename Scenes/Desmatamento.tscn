@@ -11,7 +11,6 @@ extents = Vector2( 12.8283, 13.0144 )
 "desmatamento",
 ]]
 
-editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 15.8842, 16.078 )
@@ -34,5 +33,14 @@ _update_shape_index = 0
 
 transform/pos = Vector2( -15.8842, -16.078 )
 centered = false
+
+[node name="time_pra_crescer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="time_pra_crescer" to="." method="_on_time_pra_crescer_timeout"]
 
 

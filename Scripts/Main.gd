@@ -2,9 +2,6 @@ extends Node
 
 var contador = 0
 
-#area de floresta
-var floresta = 100.0
-
 #tamanho do mapa em qnt de cells
 var floresta_size = 2304
 
@@ -30,7 +27,9 @@ onready var cena_desmatamento = preload("res://Scenes/Desmatamento.tscn")
 func _ready():
 	randomize()
 	txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
-	txt_floresta.set_text("area preservada: " + str(floresta) + "%")
+	txt_floresta.set_text("area preservada: " + str(Globals.get("floresta")) + "%")
+	#area da floresta
+	Globals.set("floresta", 100.0)
 	set_process(true)
 
 #converte o tempo do contador para segundos e retorna um array
@@ -44,7 +43,7 @@ func _converte_seg_min(tempo_em_seg):
 func _process(delta):
 	var res_tempo = _converte_seg_min(int(tempo.get_time_left()))
 	txt_tempo.set_text( str( " %02d : %02d" % [res_tempo[0], res_tempo[1]] ) )
-	txt_floresta.set_text("area preservada: %.1f" % [floresta] + "%")
+	txt_floresta.set_text("area preservada: %.1f" % [Globals.get("floresta")] + "%")
 
 func _on_Button_pressed():
 	var helicoptero = cena_helicoptero.instance()
@@ -59,7 +58,6 @@ func _on_Button_pressed():
 		dinheiro -= helicoptero.get_valor()
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 
-
 func _on_gerador_desmatamento_timeout():
 	#temporário
 	#TODO lógica do desmatamento que se inicia
@@ -67,10 +65,11 @@ func _on_gerador_desmatamento_timeout():
 	#ao menos se seja contido
 
 	var d = cena_desmatamento.instance()
+	d._construtor(10)
 	add_child(d)
 	
 	#0.043402777777778 representa 1% da area de floresta
-	floresta -= 0.043402777777778
+	Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 	contador += 1
 
 func _game_over():
