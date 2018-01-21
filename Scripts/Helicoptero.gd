@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var valor = 500 setget get_valor
+var valor = 1000 setget get_valor
 
 # velocidade em pixel/s
 export var speed = 60
@@ -51,7 +51,6 @@ func _on_TextureButton_pressed():
 	get_node("Label").set("visibility/visible", true)
 	Globals.set("selected_now", self.get_name())
 	selected = true
-	#update()
 
 func _on_Area2D_body_enter( body ):
 	if body.is_in_group("desmatamento"):
