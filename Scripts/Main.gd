@@ -46,6 +46,8 @@ func _process(delta):
 	var res_tempo = _converte_seg_min(int(tempo.get_time_left()))
 	txt_tempo.set_text( str( " %02d : %02d" % [res_tempo[0], res_tempo[1]] ) )
 	txt_floresta.set_text("area preservada: %.1f" % [Globals.get("floresta")] + "%")
+	txt_aeronaves.set_text("aeronaves: " + str(qnt_aeronave))
+	txt_agentes.set_text("agentes: " + str(qnt_agente))
 
 func _on_Button_pressed():
 	var helicoptero = cena_helicoptero.instance()
@@ -61,11 +63,8 @@ func _on_Button_pressed():
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 
 func _on_gerador_desmatamento_timeout():
-	#temporário
-	#TODO lógica do desmatamento que se inicia
-	#num lugar e vai crescendo ao redor
-	#ao menos se seja contido
 	
+	#valor random para tamanho do desmatamento
 	var num = floor(rand_range(1, 50))
 
 	var d = cena_desmatamento.instance()

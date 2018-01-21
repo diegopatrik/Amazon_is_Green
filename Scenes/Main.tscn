@@ -140,10 +140,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 10.0
-margin/top = 15.0
-margin/right = 137.0
-margin/bottom = 35.0
+margin/left = 9.0
+margin/top = 14.0
+margin/right = 136.0
+margin/bottom = 34.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -157,10 +157,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 166.0
-margin/top = 15.0
-margin/right = 282.0
-margin/bottom = 35.0
+margin/left = 165.0
+margin/top = 14.0
+margin/right = 281.0
+margin/bottom = 34.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -174,10 +174,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 39.0
-margin/top = 50.0
-margin/right = 138.0
-margin/bottom = 70.0
+margin/left = 37.0
+margin/top = 46.0
+margin/right = 136.0
+margin/bottom = 66.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -191,14 +191,31 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 164.0
-margin/top = 49.0
-margin/right = 271.0
-margin/bottom = 69.0
+margin/left = 165.0
+margin/top = 46.0
+margin/right = 272.0
+margin/bottom = 66.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 text = "Solicitar Ibama"
+flat = false
+
+[node name="Button_zoom" type="Button" parent="HUD"]
+
+visibility/opacity = 2.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 407.0
+margin/right = 96.0
+margin/bottom = 427.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "ZOOM -/+"
 flat = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -251,11 +268,13 @@ autostart = true
 [node name="gerador_desmatamento" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 5.0
+wait_time = 10.0
 one_shot = false
 autostart = true
 
 [connection signal="pressed" from="HUD/Panel/Button" to="." method="_on_Button_pressed"]
+
+[connection signal="pressed" from="HUD/Button_zoom" to="Camera2D" method="_on_Button_zoom_pressed"]
 
 [connection signal="swipe_updated" from="Camera2D/SwipeDetector" to="Camera2D" method="_on_SwipeDetector_swipe_updated"]
 

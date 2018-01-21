@@ -27,11 +27,19 @@ func _construtor(numero):
 func _ready():
 	randomize()
 	
+	#variável auxiliar
 	var achou = false
 	
+	#inicializa x e y
+	x_pos = floor(rand_range(-16, 47))
+	y_pos = floor(rand_range(-9, 26))
+	
 	while(achou!=true):
-		x_pos = floor(rand_range(-16, 47))
-		y_pos = floor(rand_range(-9, 26))
+		
+		#limita x e y para nao gerar mt proximo da base
+		while( (x_pos>10 and x_pos<21) and (y_pos>5 and y_pos<12) ): 
+			x_pos = floor(rand_range(-16, 47))
+			y_pos = floor(rand_range(-9, 26))
 		
 		if(map.get_cell(x_pos, y_pos) == 0):
 			map.set_cell(x_pos, y_pos, 1)
@@ -44,6 +52,7 @@ func _ready():
 func _on_time_pra_crescer_timeout():
 	
 	var achou = false
+	var tentativas = 0
 	
 	if(tamanho > 0):
 		while(achou!=true):
@@ -120,10 +129,14 @@ func _on_time_pra_crescer_timeout():
 				achou = true
 				map.set_cell(x_pos, y_pos, 1)
 				timer.start()
-				
-		if achou:
+			
+			tentativas += 1
+			if tentativas > 64:
+				achou = true
+				queue_free()
+			
+		if achou and tentativas < 64:
 			tamanho = tamanho - 1
 			Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 			if tamanho == 0:
-				timer.queue_free()
-				get_node("CollisionShape2D/Sprite").queue_free()
+				queue_free()
