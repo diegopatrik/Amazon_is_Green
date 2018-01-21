@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Desmatamento.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/inimigo.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -31,13 +32,15 @@ _update_shape_index = 0
 
 [node name="Sprite" type="Sprite" parent="CollisionShape2D"]
 
-transform/pos = Vector2( -15.8842, -16.078 )
+transform/pos = Vector2( -12.9786, -12.9786 )
+transform/scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="time_pra_crescer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = false
 

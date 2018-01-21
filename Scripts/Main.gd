@@ -66,7 +66,7 @@ func _on_gerador_desmatamento_timeout():
 	#num lugar e vai crescendo ao redor
 	#ao menos se seja contido
 	
-	var num = rand_range(1, 50)
+	var num = floor(rand_range(1, 50))
 
 	var d = cena_desmatamento.instance()
 	d._construtor(num)
