@@ -29,25 +29,38 @@ func _ready():
 	
 	#variável auxiliar
 	var achou = false
+	var tentativas = 0
 	
 	#inicializa x e y
 	x_pos = floor(rand_range(-16, 47))
 	y_pos = floor(rand_range(-9, 26))
 	
 	while(achou!=true):
+		print("while _ready desmatamento: " + str(tentativas))
 		
 		#limita x e y para nao gerar mt proximo da base
 		while( (x_pos>10 and x_pos<21) and (y_pos>5 and y_pos<12) ): 
+			print("while limita x e y")
 			x_pos = floor(rand_range(-16, 47))
 			y_pos = floor(rand_range(-9, 26))
+			if tentativas > 64:
+				achou = true
+				queue_free()
 		
-		if(map.get_cell(x_pos, y_pos) == 0):
+		if(map.get_cell(x_pos, y_pos) == 0 and tentativas <= 64):
 			map.set_cell(x_pos, y_pos, 1)
 			var d_pos = map.map_to_world(Vector2(x_pos,y_pos))
 			set_pos(d_pos)
+			Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
+			tamanho -= 1
 			achou = true
 			start_pos = Vector2(x_pos, y_pos)
 			timer.start()
+			
+		tentativas += 1
+		if tentativas > 64:
+			achou = true
+			queue_free()
 
 func _on_time_pra_crescer_timeout():
 	
@@ -56,6 +69,7 @@ func _on_time_pra_crescer_timeout():
 	
 	if(tamanho > 0):
 		while(achou!=true):
+			print("while _on_time_pra_crescer_timeout: " + str(tentativas))
 			
 			numero_a = rand_range(1,2)
 			timer.set_wait_time(numero_a)

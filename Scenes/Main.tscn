@@ -224,7 +224,6 @@ flat = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 512, 288 )
 anchor_mode = 1
 rotating = false

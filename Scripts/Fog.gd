@@ -28,6 +28,7 @@ var l = range(2, 5)
 
 # Process that runs in realtime
 func _fixed_process(delta):
+	#print("fixed process fog")
 	position = get_node("../Helicoptero").get_pos()
 	
 	# Calculate the corresponding tile
