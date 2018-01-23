@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 var valor = 1000 setget get_valor
 
+#variavel auxiliar para saber quando está a caminho
+var moving = false
+
 # velocidade em pixel/s
 export var speed = 60
 
@@ -27,8 +30,10 @@ func _input(event):
 	if event.is_action_pressed("mouse_click") and selected and ( Globals.get("selected_now") == self.get_name() ):
 		points = get_node("../nav").get_simple_path(get_pos(), get_global_mouse_pos(), false)
 		destino = get_global_mouse_pos()
+		moving = true
 
 func _fixed_process(delta):
+	
 	# refresh the points in the path
 	# if the path has more than one point
 	if points.size() > 1 and destino != null:
@@ -48,6 +53,13 @@ func _draw():
 			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
+	#ao tocar, caso esteja se movendo
+	#para de se mover
+	if moving:
+		destino = null
+		points = []
+		update()
+	
 	get_node("Label").set("visibility/visible", true)
 	Globals.set("selected_now", self.get_name())
 	selected = true

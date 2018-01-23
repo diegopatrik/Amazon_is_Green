@@ -8,7 +8,9 @@
 custom_solver_bias = 0.0
 radius = 59.7562
 
-[node name="Helicóptero" type="KinematicBody2D"]
+[node name="Helicóptero" type="KinematicBody2D" groups=[
+"aliados",
+]]
 
 z/z = 1
 input/pickable = false

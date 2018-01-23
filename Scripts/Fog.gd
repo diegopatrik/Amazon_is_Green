@@ -25,13 +25,16 @@ var y_old
 # Here it would be 5*2 + 1 = 10 tiles wide/high.
 var l = range(2, 5)
 
-
 # Process that runs in realtime
 func _fixed_process(delta):
-	#print("fixed process fog")
-	position = get_node("../Helicoptero").get_pos()
 	
-	# Calculate the corresponding tile
+	for node in get_parent().get_children():
+		 if(node.is_in_group("aliados")):
+				position = node.get_pos()
+				print("atualiza pos")
+			
+	
+		# Calculate the corresponding tile
 	# from the players position
 	x = int(position.x/get_cell_size().x)
 	# Switching from positive to negative tile positions
@@ -77,4 +80,3 @@ func _ready():
 			set_cell(x, y, 0, 0, 0)
 	
 	set_fixed_process(true)
-	

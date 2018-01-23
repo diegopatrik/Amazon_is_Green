@@ -8,7 +8,9 @@
 custom_solver_bias = 0.0
 radius = 262.596
 
-[node name="Base" type="Node2D"]
+[node name="Base" type="Node2D" groups=[
+"aliados",
+]]
 
 transform/pos = Vector2( 512, 288 )
 script/script = ExtResource( 1 )
