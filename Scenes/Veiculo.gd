@@ -4,5 +4,9 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 
+func _goto_desmatamento(posicao):
+	#substituir por movimento usando navigational2D
+	set_pos(posicao)
+
 func _ready():
 	pass

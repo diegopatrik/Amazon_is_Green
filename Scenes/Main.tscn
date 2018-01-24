@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Base.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
-[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=5]
-[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/tilesetfog.tres" type="TileSet" id=7]
-[ext_resource path="res://Scripts/Fog.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Veiculo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=6]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/tilesetfog.tres" type="TileSet" id=8]
+[ext_resource path="res://Scripts/Fog.gd" type="Script" id=9]
 
 [node name="Main" type="Node"]
 
@@ -41,8 +42,11 @@ __meta__ = {
 
 [node name="base" parent="." instance=ExtResource( 3 )]
 
+[node name="Veiculo" parent="base" instance=ExtResource( 4 )]
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -135,7 +139,7 @@ margin/top = 475.0
 margin/right = 658.0
 margin/bottom = 566.0
 
-[node name="Button" type="Button" parent="HUD/Panel"]
+[node name="solicitar_Helicoptero" type="Button" parent="HUD/Panel"]
 
 visibility/opacity = 2.0
 focus/ignore_mouse = false
@@ -152,7 +156,7 @@ shortcut = null
 text = "Solicitar Aeronave"
 flat = false
 
-[node name="Button1" type="Button" parent="HUD/Panel"]
+[node name="solicitar_Aeronave" type="Button" parent="HUD/Panel"]
 
 visibility/opacity = 2.0
 focus/ignore_mouse = false
@@ -166,10 +170,10 @@ margin/bottom = 40.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Solicitar Veículo"
+text = "Solicitar Veiculo"
 flat = false
 
-[node name="Button2" type="Button" parent="HUD/Panel"]
+[node name="solicitar_Agente" type="Button" parent="HUD/Panel"]
 
 visibility/opacity = 2.0
 focus/ignore_mouse = false
@@ -183,27 +187,10 @@ margin/bottom = 74.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Solicitar PF"
+text = "Solicitar Agente"
 flat = false
 
-[node name="Button3" type="Button" parent="HUD/Panel"]
-
-visibility/opacity = 2.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 165.0
-margin/top = 54.0
-margin/right = 272.0
-margin/bottom = 74.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Solicitar Ibama"
-flat = false
-
-[node name="exit" type="Button" parent="HUD/Panel"]
+[node name="sair" type="Button" parent="HUD/Panel"]
 
 visibility/opacity = 2.0
 focus/ignore_mouse = false
@@ -257,13 +244,13 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-script/script = ExtResource( 4 )
+script/script = ExtResource( 5 )
 
 [node name="SwipeDetector" type="Node" parent="Camera2D"]
 
-script/script = ExtResource( 5 )
+script/script = ExtResource( 6 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 7 )
 }
 detect_gesture = true
 process_method = null
@@ -296,7 +283,7 @@ autostart = true
 z/z = 1
 z/relative = false
 mode = 0
-tile_set = ExtResource( 7 )
+tile_set = ExtResource( 8 )
 cell/size = Vector2( 48, 48 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -310,11 +297,11 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray(  )
-script/script = ExtResource( 8 )
+script/script = ExtResource( 9 )
 
-[connection signal="pressed" from="HUD/Panel/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="HUD/Panel/solicitar_Helicoptero" to="." method="_on_solicitar_Helicoptero_pressed"]
 
-[connection signal="pressed" from="HUD/Panel/exit" to="base" method="_on_exit_pressed"]
+[connection signal="pressed" from="HUD/Panel/sair" to="base" method="_on_sair_pressed"]
 
 [connection signal="pressed" from="HUD/Button_zoom" to="Camera2D" method="_on_Button_zoom_pressed"]
 

@@ -49,9 +49,9 @@ func _process(delta):
 	txt_aeronaves.set_text("aeronaves: " + str(qnt_aeronave))
 	txt_agentes.set_text("agentes: " + str(qnt_agente))
 
-func _on_Button_pressed():
+func _on_solicitar_Helicoptero_pressed():
 	var helicoptero = cena_helicoptero.instance()
-	if helicoptero.get_valor() <= dinheiro:
+	if helicoptero.get_valor() <= dinheiro: #and qnt_agente >= 2:
 		add_child(helicoptero)
 		qnt_aeronave += 1
 		helicoptero.set_pos(position + Vector2(-32,0))
@@ -61,6 +61,9 @@ func _on_Button_pressed():
 			position = helicoptero.get_pos()
 		dinheiro -= helicoptero.get_valor()
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+	else:
+		#msg n tem dinheiro ou agentes suficientes
+		pass
 
 func _on_gerador_desmatamento_timeout():
 	
