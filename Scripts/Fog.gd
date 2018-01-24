@@ -25,14 +25,26 @@ var y_old
 # Here it would be 5*2 + 1 = 10 tiles wide/high.
 var l = range(2, 5)
 
-# Process that runs in realtime
 func _fixed_process(delta):
 	
-	for node in get_parent().get_children():
-		 if(node.is_in_group("aliados")):
-				position = node.get_pos()
-				print("atualiza pos")
+	# Create the actual and active visible part
+		var end = l.size() - 1
+		var start = 0
+		for steps in range(l.size()):
+			for m in range(x - l[end], x + l[end] + 1):
+				for n in range(y - l[start], y + l[start] + 1):
+					set_cell(m, n, -1)
+			end -= 1
+			start += 1
+
+func _ready():
+	# Create a square filled with the 100% opaque fog
+	for x in range(x_min, x_max):
+		for y in range(y_min, y_max):
+			set_cell(x, y, 0, 0, 0)
 			
+	
+	position = get_node("../base").get_pos()
 	
 		# Calculate the corresponding tile
 	# from the players position
@@ -71,12 +83,6 @@ func _fixed_process(delta):
 	
 	x_old = x
 	y_old = y
-
-
-func _ready():
-	# Create a square filled with the 100% opaque fog
-	for x in range(x_min, x_max):
-		for y in range(y_min, y_max):
-			set_cell(x, y, 0, 0, 0)
+	
 	
 	set_fixed_process(true)
