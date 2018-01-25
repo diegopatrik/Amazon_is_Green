@@ -8,7 +8,7 @@ var points = []
 var destino = null
 
 func _goto_desmatamento(posicao):
-		points = get_node("../nav").get_simple_path(get_pos(), get_global_mouse_pos(), false)
+		points = get_node("../../nav").get_simple_path(get_pos(), get_global_mouse_pos(), false)
 		destino = get_global_mouse_pos()
 
 func _ready():
