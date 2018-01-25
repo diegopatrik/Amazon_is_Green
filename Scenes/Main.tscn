@@ -44,6 +44,8 @@ __meta__ = {
 
 [node name="Veiculo" parent="base" instance=ExtResource( 4 )]
 
+speed = 60
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 editor/display_folded = true

@@ -133,3 +133,5 @@ func _on_TextureButton_pressed():
 func _on_Area2D_body_enter( body ):
 	if body.is_in_group("desmatamento"):
 		print("HHH Desmatamento detectado")
+		points = get_node("../nav").get_simple_path(get_pos(), body.get_global_pos(), false)
+		destino = body.get_global_pos()
