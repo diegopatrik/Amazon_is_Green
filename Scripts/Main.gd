@@ -22,9 +22,12 @@ onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
 
 onready var cena_helicoptero = preload("res://Scenes/Helicoptero.tscn")
-var position = Vector2(448,288)
+var position_H = Vector2(448,288)
 
 onready var cena_desmatamento = preload("res://Scenes/Desmatamento.tscn")
+var position_V = Vector2(576,288)
+
+onready var cena_veiculo = preload("res://Scenes/Veiculo.tscn")
 
 func _ready():
 	randomize()
@@ -51,19 +54,39 @@ func _process(delta):
 
 func _on_solicitar_Helicoptero_pressed():
 	var helicoptero = cena_helicoptero.instance()
-	if helicoptero.get_valor() <= dinheiro: #and qnt_agente >= 2:
+	if helicoptero.get_valor() <= dinheiro: #and qnt_agente >= 4:
 		add_child(helicoptero)
 		qnt_aeronave += 1
-		helicoptero.set_pos(position + Vector2(-32,0))
+		helicoptero.set_pos(position_H + Vector2(-32,0))
 		if(helicoptero.get_pos().x <= 352):
-			position = Vector2(448,288)
+			position_H = Vector2(448,288)
 		else:
-			position = helicoptero.get_pos()
+			position_H = helicoptero.get_pos()
 		dinheiro -= helicoptero.get_valor()
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 	else:
 		#msg n tem dinheiro ou agentes suficientes
 		pass
+
+func _on_solicitar_Veiculo_pressed():
+	var veiculo = cena_veiculo.instance()
+	if veiculo.get_valor() <= dinheiro: #and qnt_agente >= 2:
+		add_child(veiculo)
+		qnt_veiculo += 1
+		veiculo.set_pos(position_V + Vector2(48,0))
+		if(veiculo.get_pos().x > 720):
+			position_V = Vector2(576,288)
+		else:
+			position_V = veiculo.get_pos()
+		dinheiro -= veiculo.get_valor()
+		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+	else:
+		#msg n tem dinheiro ou agentes suficientes
+		pass
+
+#TODO
+func _on_solicitar_Agente_pressed():
+	pass # replace with function body
 
 func _on_gerador_desmatamento_timeout():
 	

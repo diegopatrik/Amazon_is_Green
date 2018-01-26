@@ -36,7 +36,6 @@ func _ready():
 	y_pos = floor(rand_range(-9, 26))
 	
 	while(achou!=true):
-		print("while _ready desmatamento: " + str(tentativas))
 		
 		#limita x e y para nao gerar mt proximo da base
 		while( (x_pos>10 and x_pos<21) and (y_pos>5 and y_pos<12) ): 
@@ -69,7 +68,6 @@ func _on_time_pra_crescer_timeout():
 	
 	if(tamanho > 0):
 		while(achou!=true):
-			print("while _on_time_pra_crescer_timeout: " + str(tentativas))
 			
 			numero_a = rand_range(1,2)
 			timer.set_wait_time(numero_a)

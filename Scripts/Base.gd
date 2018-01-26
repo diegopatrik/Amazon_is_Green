@@ -13,10 +13,9 @@ func _on_TextureButton_pressed():
 func _on_Area2D_body_enter( body ):
 	if body.is_in_group("desmatamento"):
 		print("Desmatamento detectado")
-		for node in get_children():
-			if  node.has_method("_goto_desmatamento"):
-				#do something
-				node._goto_desmatamento(body.get_pos())
+		for node in get_parent().get_children():
+			if  node.has_method("_goto_desmatamento") and node != null:
+				node._goto_desmatamento(body)
 
 func _on_sair_pressed():
 	if selecionado:
