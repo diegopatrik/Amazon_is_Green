@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 262.596
+radius = 208.88
 
 [node name="Base" type="Node2D" groups=[
 "aliados",
@@ -33,14 +33,13 @@ params/stretch_mode = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 
-editor/display_folded = true
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Sprite"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -8.62448, 16.5856 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -49,6 +48,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
 
+transform/pos = Vector2( -8.62448, 16.5856 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var tamanho = 0
+var crescendo = true
 
 #variavel para num aleatorio e match
 var numero_a = 0
@@ -24,8 +25,12 @@ var start_pos = Vector2()
 func _construtor(numero):
 	tamanho = numero
 
+func _stop():
+	tamanho = 0
+
 func _ready():
 	randomize()
+	set_fixed_process(true)
 	
 	#variável auxiliar
 	var achou = false
@@ -60,6 +65,11 @@ func _ready():
 		if tentativas > 64:
 			achou = true
 			queue_free()
+
+func _fixed_process(delta):
+	#var cell_pos_atual = map.world_to_map(start_pos)
+	#if (cell_pos_atual.x>=9 and cell_pos_atual.x<=22) and (cell_pos_atual.y>=2 and cell_pos_atual.y<=15):
+	pass
 
 func _on_time_pra_crescer_timeout():
 	
@@ -152,3 +162,5 @@ func _on_time_pra_crescer_timeout():
 			Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 			if tamanho == 0:
 				queue_free()
+	else:
+		queue_free()

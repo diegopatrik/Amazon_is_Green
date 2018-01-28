@@ -224,12 +224,11 @@ flat = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 512, 288 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1, 1 )
+zoom = Vector2( 2, 2 )
 limit/left = -512
 limit/top = -288
 limit/right = 1536
@@ -272,7 +271,7 @@ autostart = true
 [node name="gerador_desmatamento" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 10.0
+wait_time = 2.0
 one_shot = false
 autostart = true
 

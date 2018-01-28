@@ -13,7 +13,7 @@ func get_valor():
 	return valor
 
 func _goto_desmatamento( body ):
-		points = get_node("../../nav").get_simple_path(get_pos(), body.get_global_pos(), false)
+		points = get_node("../nav").get_simple_path(get_pos(), body.get_global_pos(), false)
 		destino = body.get_global_pos()
 
 func _ready():
@@ -38,3 +38,10 @@ func _draw():
 	if points.size() > 2:
 		for p in points:
 			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
+
+func _on_Area2D_body_enter( body ):
+	if body.is_in_group("desmatamento"):
+		print("VVV Desmatamento impedido")
+		points = get_node("../nav").get_simple_path(get_pos(), body.get_global_pos(), false)
+		destino = body.get_global_pos()
+		body._stop()

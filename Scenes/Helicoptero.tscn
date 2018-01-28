@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 124.15
+radius = 130.607
 
 [node name="Helicoptero" type="KinematicBody2D" groups=[
 "aliados",

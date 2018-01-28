@@ -1,6 +1,6 @@
 extends Camera2D
 
-var zoom = false
+var zoom = true
 
 #código para mover a câmera
 

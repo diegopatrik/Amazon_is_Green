@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 29.006
+radius = 32.2804
 
 [node name="Veiculo" type="KinematicBody2D" groups=[
 "aliados",
@@ -40,5 +40,7 @@ _update_shape_index = 0
 
 z/z = 1
 texture = ExtResource( 2 )
+
+[connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
 
 
