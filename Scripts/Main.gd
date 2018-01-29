@@ -20,6 +20,7 @@ onready var txt_aeronaves = get_node("./HUD/Aeronaves")
 onready var txt_agentes = get_node("./HUD/Agentes")
 onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
+onready var txt_mensagem = get_node("./HUD/Mensagem")
 
 onready var cena_helicoptero = preload("res://Scenes/Helicoptero.tscn")
 var position_H = Vector2(448,288)
@@ -54,7 +55,7 @@ func _process(delta):
 
 func _on_solicitar_Helicoptero_pressed():
 	var helicoptero = cena_helicoptero.instance()
-	if helicoptero.get_valor() <= dinheiro: #and qnt_agente >= 4:
+	if helicoptero.get_valor() <= dinheiro and qnt_agente >= 4:
 		add_child(helicoptero)
 		qnt_aeronave += 1
 		helicoptero.set_pos(position_H + Vector2(-32,0))
@@ -65,12 +66,12 @@ func _on_solicitar_Helicoptero_pressed():
 		dinheiro -= helicoptero.get_valor()
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 	else:
-		#msg n tem dinheiro ou agentes suficientes
-		pass
+		txt_mensagem.set_text("É necessário $1000 e 4 agentes para solicitar um Helicóptero")
+		get_node("HUD/Panel/MensagemTimer").start()
 
 func _on_solicitar_Veiculo_pressed():
 	var veiculo = cena_veiculo.instance()
-	if veiculo.get_valor() <= dinheiro: #and qnt_agente >= 2:
+	if veiculo.get_valor() <= dinheiro and qnt_agente >= 2:
 		add_child(veiculo)
 		qnt_veiculo += 1
 		veiculo.set_pos(position_V + Vector2(48,0))
@@ -81,12 +82,14 @@ func _on_solicitar_Veiculo_pressed():
 		dinheiro -= veiculo.get_valor()
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 	else:
-		#msg n tem dinheiro ou agentes suficientes
-		pass
+		txt_mensagem.set_text("É necessário $500 e 2 agentes para solicitar um Helicóptero")
+		get_node("HUD/Panel/MensagemTimer").start()
 
 #TODO
 func _on_solicitar_Agente_pressed():
-	pass # replace with function body
+	if dinheiro >= 100:
+		dinheiro -= 100
+		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 
 func _on_gerador_desmatamento_timeout():
 	
@@ -98,8 +101,11 @@ func _on_gerador_desmatamento_timeout():
 	add_child(d)
 	
 	#0.043402777777778 representa 1 cell da area de floresta
-	Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
+	#Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 	contador += 1
 
 func _game_over():
 	pass # replace with function body
+
+func _on_MensagemTimer_timeout():
+	txt_mensagem.set_text("")

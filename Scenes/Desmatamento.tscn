@@ -46,6 +46,13 @@ wait_time = 5.0
 one_shot = true
 autostart = false
 
+[node name="delay" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = false
+
 [connection signal="timeout" from="time_pra_crescer" to="." method="_on_time_pra_crescer_timeout"]
 
 

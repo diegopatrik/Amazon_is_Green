@@ -30,7 +30,6 @@ func _stop():
 
 func _ready():
 	randomize()
-	set_fixed_process(true)
 	
 	#variável auxiliar
 	var achou = false
@@ -43,8 +42,7 @@ func _ready():
 	while(achou!=true):
 		
 		#limita x e y para nao gerar mt proximo da base
-		while( (x_pos>10 and x_pos<21) and (y_pos>5 and y_pos<12) ): 
-			print("while limita x e y")
+		while( (x_pos>10 and x_pos<21) and (y_pos>5 and y_pos<12) ):
 			x_pos = floor(rand_range(-16, 47))
 			y_pos = floor(rand_range(-9, 26))
 			if tentativas > 64:
@@ -65,11 +63,6 @@ func _ready():
 		if tentativas > 64:
 			achou = true
 			queue_free()
-
-func _fixed_process(delta):
-	#var cell_pos_atual = map.world_to_map(start_pos)
-	#if (cell_pos_atual.x>=9 and cell_pos_atual.x<=22) and (cell_pos_atual.y>=2 and cell_pos_atual.y<=15):
-	pass
 
 func _on_time_pra_crescer_timeout():
 	
@@ -163,4 +156,7 @@ func _on_time_pra_crescer_timeout():
 			if tamanho == 0:
 				queue_free()
 	else:
+		# TODO delay para n sumir instantaneamente após helicoptero
+		#ou veiculo chegar
+		get_node("delay").start()
 		queue_free()

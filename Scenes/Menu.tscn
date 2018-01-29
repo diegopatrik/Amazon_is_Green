@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://Scenes/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/background2.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/nome.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/b1.png" type="Texture" id=4]
@@ -21,16 +21,28 @@ transform/pos = Vector2( 608, 288 )
 z/z = 1
 texture = ExtResource( 3 )
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Botoes" type="Control" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 288.0
-margin/right = 216.0
-margin/bottom = 334.0
+margin/left = 2.0
+margin/top = 294.0
+margin/right = 218.0
+margin/bottom = 541.0
+
+[node name="TextureButton" type="TextureButton" parent="Botoes"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -2.0
+margin/top = 7.0
+margin/right = 214.0
+margin/bottom = 53.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -39,7 +51,7 @@ textures/pressed = ExtResource( 5 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="Botoes/TextureButton"]
 
 rect/scale = Vector2( 2, 2 )
 focus/ignore_mouse = true
@@ -55,6 +67,77 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[node name="TextureButton1" type="TextureButton" parent="Botoes"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -2.0
+margin/top = 89.0
+margin/right = 214.0
+margin/bottom = 135.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 5 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="Botoes/TextureButton1"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 45.0
+margin/top = 9.0
+margin/right = 109.0
+margin/bottom = 23.0
+text = "TUTORIAL"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TextureButton2" type="TextureButton" parent="Botoes"]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -2.0
+margin/top = 174.0
+margin/right = 214.0
+margin/bottom = 220.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 5 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="Botoes/TextureButton2"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 77.0
+margin/top = 9.0
+margin/right = 118.0
+margin/bottom = 23.0
+text = "SAIR"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="Botoes/TextureButton" to="." method="_on_TextureButton_pressed"]
 
 

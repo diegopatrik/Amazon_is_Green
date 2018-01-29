@@ -44,7 +44,6 @@ __meta__ = {
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -127,7 +126,6 @@ max_lines_visible = -1
 [node name="Panel" type="Panel" parent="HUD"]
 
 editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -205,6 +203,28 @@ shortcut = null
 text = "X"
 flat = false
 
+[node name="MensagemTimer" type="Timer" parent="HUD/Panel"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="Mensagem" type="Label" parent="HUD"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 287.0
+margin/top = 440.0
+margin/right = 327.0
+margin/bottom = 454.0
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Button_zoom" type="Button" parent="HUD"]
 
 visibility/opacity = 2.0
@@ -224,6 +244,7 @@ flat = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 512, 288 )
 anchor_mode = 1
 rotating = false
@@ -265,13 +286,13 @@ debug_mode = false
 
 process_mode = 1
 wait_time = 300.0
-one_shot = false
+one_shot = true
 autostart = true
 
 [node name="gerador_desmatamento" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 10.0
 one_shot = false
 autostart = true
 
@@ -303,6 +324,8 @@ script/script = ExtResource( 8 )
 [connection signal="pressed" from="HUD/Panel/solicitar_Agente" to="." method="_on_solicitar_Agente_pressed"]
 
 [connection signal="pressed" from="HUD/Panel/sair" to="base" method="_on_sair_pressed"]
+
+[connection signal="timeout" from="HUD/Panel/MensagemTimer" to="." method="_on_MensagemTimer_timeout"]
 
 [connection signal="pressed" from="HUD/Button_zoom" to="Camera2D" method="_on_Button_zoom_pressed"]
 
