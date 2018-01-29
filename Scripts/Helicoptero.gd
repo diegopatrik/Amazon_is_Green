@@ -3,10 +3,10 @@ extends KinematicBody2D
 var valor = 1000 setget get_valor
 
 #variavel auxiliar para saber quando está a caminho
-var moving = false
+var moving = false setget get_moving
 
 # velocidade em pixel/s
-export var speed = 60
+export var speed = 60 setget set_veloc, get_veloc
 
 # identifica se o helicoptero foi selecionado
 var selected = false
@@ -41,6 +41,15 @@ var l = range(2, 5)
 
 func get_valor():
 	return valor
+
+func set_veloc(veloc):
+	speed = veloc
+
+func get_veloc():
+	return speed
+
+func get_moving():
+	return moving
 
 func _ready():
 	set_fixed_process(true)
@@ -119,6 +128,7 @@ func _draw():
 			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
+	
 	#ao tocar, caso esteja se movendo
 	#para de se mover
 	if moving:
@@ -129,6 +139,10 @@ func _on_TextureButton_pressed():
 	get_node("Label").set("visibility/visible", true)
 	Globals.set("selected_now", self.get_name())
 	selected = true
+	
+	#mostra panel lateral com opções
+	get_node("../HUD/Panel H").set("visibility/visible", true)
+	get_node("../HUD/Panel H/Label").set_text("Velocidade: " + str(speed))
 
 func _on_Area2D_body_enter( body ):
 	if body.is_in_group("desmatamento"):

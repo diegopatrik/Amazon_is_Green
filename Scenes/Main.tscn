@@ -125,6 +125,7 @@ max_lines_visible = -1
 
 [node name="Panel" type="Panel" parent="HUD"]
 
+editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -241,6 +242,66 @@ shortcut = null
 text = "ZOOM -/+"
 flat = false
 
+[node name="Panel H" type="Panel" parent="HUD"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 806.0
+margin/top = 214.0
+margin/right = 987.0
+margin/bottom = 358.0
+
+[node name="ButtonUpgrade" type="Button" parent="HUD/Panel H"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 32.0
+margin/top = 97.0
+margin/right = 149.0
+margin/bottom = 117.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "UPGRADE $valor"
+flat = false
+
+[node name="Label" type="Label" parent="HUD/Panel H"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 33.0
+margin/top = 60.0
+margin/right = 111.0
+margin/bottom = 74.0
+text = "Velocidade: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sair" type="Button" parent="HUD/Panel H"]
+
+visibility/opacity = 2.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 149.0
+margin/top = -8.0
+margin/right = 190.0
+margin/bottom = 12.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "X"
+flat = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 editor/display_folded = true
@@ -327,6 +388,10 @@ script/script = ExtResource( 8 )
 [connection signal="timeout" from="HUD/Panel/MensagemTimer" to="." method="_on_MensagemTimer_timeout"]
 
 [connection signal="pressed" from="HUD/Button_zoom" to="Camera2D" method="_on_Button_zoom_pressed"]
+
+[connection signal="pressed" from="HUD/Panel H/ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]
+
+[connection signal="pressed" from="HUD/Panel H/sair" to="." method="_on_sair_pressed"]
 
 [connection signal="swipe_updated" from="Camera2D/SwipeDetector" to="Camera2D" method="_on_SwipeDetector_swipe_updated"]
 

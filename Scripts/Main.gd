@@ -13,6 +13,10 @@ var qnt_aeronave = 0
 var qnt_veiculo = 0
 var qnt_agente = 0
 
+#velocidade
+var velocidade_helicopteros = 60
+var velocidade_veiculos = 60
+
 #textos
 onready var txt_floresta = get_node("./HUD/Floresta")
 onready var txt_dinheiro = get_node("./HUD/Dinheiro")
@@ -105,7 +109,17 @@ func _on_gerador_desmatamento_timeout():
 	add_child(d)
 
 func _game_over():
-	pass # replace with function body
+	#vai para tela de game over
+	get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _on_MensagemTimer_timeout():
 	txt_mensagem.set_text("")
+
+func _on_ButtonUpgrade_pressed():
+	for node in get_children():
+		if node.has_method("get_moving"):
+			if node.get_moving():
+				node.set_veloc(node.get_veloc() + 20)
+
+func _on_sair_pressed():
+	get_parent().set("visibility/visible", false)
