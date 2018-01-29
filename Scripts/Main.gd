@@ -6,21 +6,23 @@ var contador = 0
 var floresta_size = 2304
 
 #dinheiro disponível
-var dinheiro = 10000
+var dinheiro = 5000
 
 #recursos
 var qnt_aeronave = 0
 var qnt_veiculo = 0
 var qnt_agente = 0
 
+#textos
 onready var txt_floresta = get_node("./HUD/Floresta")
 onready var txt_dinheiro = get_node("./HUD/Dinheiro")
 onready var txt_tempo = get_node("./HUD/Tempo")
 onready var txt_aeronaves = get_node("./HUD/Aeronaves")
 onready var txt_agentes = get_node("./HUD/Agentes")
+onready var txt_mensagem = get_node("./HUD/Mensagem")
+
 onready var map = get_node("./nav/TileMap")
 onready var tempo = get_node("./tempo_restante")
-onready var txt_mensagem = get_node("./HUD/Mensagem")
 
 onready var cena_helicoptero = preload("res://Scenes/Helicoptero.tscn")
 var position_H = Vector2(448,288)
@@ -90,19 +92,17 @@ func _on_solicitar_Agente_pressed():
 	if dinheiro >= 100:
 		dinheiro -= 100
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+		qnt_agente += 1
 
 func _on_gerador_desmatamento_timeout():
 	
 	#valor random para tamanho do desmatamento
 	var num = floor(rand_range(1, 50))
-
+	
+	#inicia um desmatamento de tamanho num
 	var d = cena_desmatamento.instance()
 	d._construtor(num)
 	add_child(d)
-	
-	#0.043402777777778 representa 1 cell da area de floresta
-	#Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
-	contador += 1
 
 func _game_over():
 	pass # replace with function body

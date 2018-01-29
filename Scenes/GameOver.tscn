@@ -6,4 +6,58 @@
 
 script/script = ExtResource( 1 )
 
+[node name="Estrela1" type="Sprite" parent="."]
+
+[node name="Estrela2" type="Sprite" parent="."]
+
+[node name="Estrela3" type="Sprite" parent="."]
+
+[node name="BotaoHome" type="TextureButton" parent="."]
+
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 466.0
+margin/top = 400.0
+margin/right = 603.0
+margin/bottom = 440.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="BotaoHome"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 10.0
+margin/right = 158.0
+margin/bottom = 24.0
+text = "colocar botao home aqui"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Pontuacao" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 500.0
+margin/top = 252.0
+margin/right = 540.0
+margin/bottom = 266.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pressed" from="BotaoHome" to="." method="_on_BotaoHome_pressed"]
+
 

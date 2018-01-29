@@ -29,12 +29,10 @@ func _fixed_process(delta):
 			set_pos(get_pos().linear_interpolate(points[0], (speed * delta)/distance))
 		else:
 			points.remove(0)
-			#selected = false
-			#get_node("Label").set("visibility/visible", false)
-		update() # we update the node so it has to draw it self again
+		update() # update para redesenhar
 
 func _draw():
-	# if there are points to draw
+	# caso tenha pontos, ele desenha
 	if points.size() > 2:
 		for p in points:
 			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)

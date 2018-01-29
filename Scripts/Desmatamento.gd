@@ -53,6 +53,7 @@ func _ready():
 			map.set_cell(x_pos, y_pos, 1)
 			var d_pos = map.map_to_world(Vector2(x_pos,y_pos))
 			set_pos(d_pos)
+			#0.043402777777778 representa 1 cell da area de floresta
 			Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 			tamanho -= 1
 			achou = true
@@ -72,7 +73,7 @@ func _on_time_pra_crescer_timeout():
 	if(tamanho > 0):
 		while(achou!=true):
 			
-			numero_a = rand_range(1,2)
+			numero_a = rand_range(2,6)
 			timer.set_wait_time(numero_a)
 			
 			numero_b = ceil(rand_range(1,8))
@@ -152,6 +153,7 @@ func _on_time_pra_crescer_timeout():
 			
 		if achou and tentativas < 64:
 			tamanho = tamanho - 1
+			#0.043402777777778 representa 1 cell da area de floresta
 			Globals.set("floresta", Globals.get("floresta") - 0.043402777777778)
 			if tamanho == 0:
 				queue_free()
