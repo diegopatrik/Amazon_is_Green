@@ -119,7 +119,6 @@ func _fixed_process(delta):
 		update() # we update the node so it has to draw it self again
 		
 		atualiza_fog()
-	
 
 func _draw():
 	# if there are points to draw
@@ -128,7 +127,6 @@ func _draw():
 			draw_circle(p - get_global_pos(), 2, Color(0, 1, 1)) # we draw a circle (convert to global position first)
 
 func _on_TextureButton_pressed():
-	
 	#ao tocar, caso esteja se movendo
 	#para de se mover
 	if moving:

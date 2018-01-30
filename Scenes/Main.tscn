@@ -125,14 +125,13 @@ max_lines_visible = -1
 
 [node name="Panel" type="Panel" parent="HUD"]
 
-editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 362.0
+margin/left = 384.0
 margin/top = 475.0
-margin/right = 658.0
+margin/right = 641.0
 margin/bottom = 566.0
 
 [node name="solicitar_Helicoptero" type="Button" parent="HUD/Panel"]
@@ -142,14 +141,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 10.0
-margin/top = 20.0
-margin/right = 137.0
-margin/bottom = 40.0
+margin/left = 28.0
+margin/top = 5.0
+margin/right = 223.0
+margin/bottom = 25.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Solicitar Aeronave"
+text = "Solicitar Aeronave $1000 @4"
 flat = false
 
 [node name="solicitar_Veiculo" type="Button" parent="HUD/Panel"]
@@ -159,14 +158,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 165.0
-margin/top = 20.0
-margin/right = 281.0
-margin/bottom = 40.0
+margin/left = 38.0
+margin/top = 33.0
+margin/right = 212.0
+margin/bottom = 53.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Solicitar Veiculo"
+text = "Solicitar Veiculo $500 @2"
 flat = false
 
 [node name="solicitar_Agente" type="Button" parent="HUD/Panel"]
@@ -176,14 +175,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 94.0
-margin/top = 58.0
-margin/right = 206.0
-margin/bottom = 78.0
+margin/left = 53.0
+margin/top = 61.0
+margin/right = 201.0
+margin/bottom = 81.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Solicitar Agente"
+text = "Solicitar Agente $100"
 flat = false
 
 [node name="sair" type="Button" parent="HUD/Panel"]
@@ -193,10 +192,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 269.0
-margin/top = -12.0
-margin/right = 310.0
-margin/bottom = 8.0
+margin/left = 239.0
+margin/top = -10.0
+margin/right = 268.0
+margin/bottom = 10.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -206,7 +205,7 @@ flat = false
 [node name="MensagemTimer" type="Timer" parent="HUD/Panel"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 2.0
 one_shot = true
 autostart = false
 
@@ -249,10 +248,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 806.0
-margin/top = 214.0
-margin/right = 987.0
-margin/bottom = 358.0
+margin/left = 842.0
+margin/top = 230.0
+margin/right = 985.0
+margin/bottom = 350.0
 
 [node name="ButtonUpgrade" type="Button" parent="HUD/Panel H"]
 
@@ -260,14 +259,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 32.0
-margin/top = 97.0
-margin/right = 149.0
-margin/bottom = 117.0
+margin/left = 13.0
+margin/top = 75.0
+margin/right = 130.0
+margin/bottom = 95.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "UPGRADE $valor"
+text = "UPGRADE $750"
 flat = false
 
 [node name="Label" type="Label" parent="HUD/Panel H"]
@@ -276,10 +275,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 33.0
-margin/top = 60.0
-margin/right = 111.0
-margin/bottom = 74.0
+margin/left = 22.0
+margin/top = 38.0
+margin/right = 100.0
+margin/bottom = 52.0
 text = "Velocidade: "
 percent_visible = 1.0
 lines_skipped = 0
@@ -292,10 +291,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 149.0
-margin/top = -8.0
-margin/right = 190.0
-margin/bottom = 12.0
+margin/left = 127.0
+margin/top = -10.0
+margin/right = 156.0
+margin/bottom = 10.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null

@@ -15,7 +15,7 @@ var qnt_agente = 0
 
 #velocidade
 var velocidade_helicopteros = 60
-var velocidade_veiculos = 60
+#var velocidade_veiculos = 60
 
 #textos
 onready var txt_floresta = get_node("./HUD/Floresta")
@@ -91,12 +91,13 @@ func _on_solicitar_Veiculo_pressed():
 		txt_mensagem.set_text("É necessário $500 e 2 agentes para solicitar um Helicóptero")
 		get_node("HUD/Panel/MensagemTimer").start()
 
-#TODO
 func _on_solicitar_Agente_pressed():
 	if dinheiro >= 100:
 		dinheiro -= 100
 		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 		qnt_agente += 1
+	else:
+		txt_mensagem.set_text("É necessário $100 para solicitar um agente")
 
 func _on_gerador_desmatamento_timeout():
 	
@@ -117,9 +118,12 @@ func _on_MensagemTimer_timeout():
 
 func _on_ButtonUpgrade_pressed():
 	for node in get_children():
-		if node.has_method("get_moving"):
+		if node.has_method("get_moving") and dinheiro >= 750:
 			if node.get_moving():
 				node.set_veloc(node.get_veloc() + 20)
+				get_node("HUD/Panel H/Label").set_text("Velocidade: " + str(node.get_veloc()))
+				dinheiro -= 750
+				txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
 
 func _on_sair_pressed():
-	get_parent().set("visibility/visible", false)
+	get_node("HUD/Panel H").set("visibility/visible", false)
