@@ -84,5 +84,4 @@ func _ready():
 	x_old = x
 	y_old = y
 	
-	
 	set_fixed_process(true)

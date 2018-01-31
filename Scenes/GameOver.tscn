@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/star.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/home1.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/home2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/background3.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/star.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/home1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/home2.png" type="Texture" id=5]
 
 [node name="GameOver" type="Node2D"]
 
@@ -11,20 +12,23 @@ script/script = ExtResource( 1 )
 
 [node name="background" type="Sprite" parent="."]
 
+texture = ExtResource( 2 )
+centered = false
+
 [node name="Estrela1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 358.747, 134.153 )
-texture = ExtResource( 2 )
+transform/pos = Vector2( 379.85, 134.153 )
+texture = ExtResource( 3 )
 
 [node name="Estrela2" type="Sprite" parent="."]
 
-transform/pos = Vector2( 489.886, 79.889 )
-texture = ExtResource( 2 )
+transform/pos = Vector2( 510.989, 79.889 )
+texture = ExtResource( 3 )
 
 [node name="Estrela3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 619.517, 129.631 )
-texture = ExtResource( 2 )
+transform/pos = Vector2( 640.62, 129.631 )
+texture = ExtResource( 3 )
 
 [node name="BotaoHome" type="TextureButton" parent="."]
 
@@ -32,15 +36,15 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 440.0
-margin/top = 433.0
-margin/right = 565.0
-margin/bottom = 558.0
+margin/left = 453.0
+margin/top = 425.0
+margin/right = 578.0
+margin/bottom = 550.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 3 )
-textures/pressed = ExtResource( 4 )
+textures/normal = ExtResource( 4 )
+textures/pressed = ExtResource( 5 )
 params/resize_mode = 0
 params/scale = Vector2( 0.8, 0.8 )
 params/stretch_mode = 0
@@ -53,9 +57,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 106.0
-margin/top = 329.0
+margin/top = 317.0
 margin/right = 367.0
-margin/bottom = 345.0
+margin/bottom = 333.0
 text = "Você conseguiu proteger 99% da floresta"
 percent_visible = 1.0
 lines_skipped = 0
@@ -68,10 +72,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 386.0
-margin/top = 238.0
-margin/right = 445.0
-margin/bottom = 252.0
+margin/left = 410.0
+margin/top = 230.0
+margin/right = 480.0
+margin/bottom = 244.0
 text = "Parabéns!!!"
 percent_visible = 1.0
 lines_skipped = 0

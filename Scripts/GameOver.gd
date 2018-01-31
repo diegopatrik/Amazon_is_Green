@@ -12,15 +12,21 @@ func _ready():
 		
 	elif pontuacao >= 80:
 		#2 estrelas
+		get_node("Estrela3").set("visibility/opacity", 0.4)
 		pass
 	elif pontuacao > 70:
 		#1 estrela
+		get_node("Estrela3").set("visibility/opacity", 0.4)
+		get_node("Estrela2").set("visibility/opacity", 0.4)
 		pass
 	else:
 		#0 estrelas
+		get_node("Estrela3").set("visibility/opacity", 0.4)
+		get_node("Estrela2").set("visibility/opacity", 0.4)
+		get_node("Estrela1").set("visibility/opacity", 0.4)
 		pass
 	
-	txt_pontuacao.set_text("Você conseguiu proteger " + str(pontuacao) + "% da floresta!")
+	txt_pontuacao.set_text("Você conseguiu proteger %.1f" % [pontuacao] + "% da floresta!")
 
 func _on_BotaoHome_pressed():
 	get_tree().change_scene("res://Scenes/Menu.tscn")

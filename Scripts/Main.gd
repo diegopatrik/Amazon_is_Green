@@ -15,7 +15,6 @@ var qnt_agente = 0
 
 #velocidade
 var velocidade_helicopteros = 60
-#var velocidade_veiculos = 60
 
 #textos
 onready var txt_floresta = get_node("./HUD/Floresta")
@@ -38,10 +37,13 @@ onready var cena_veiculo = preload("res://Scenes/Veiculo.tscn")
 
 func _ready():
 	randomize()
-	txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
-	txt_floresta.set_text("area preservada: " + str(Globals.get("floresta")) + "%")
+	
 	#area da floresta
 	Globals.set("floresta", 100.0)
+	#seta texto
+	txt_dinheiro.set_text(str(dinheiro))
+	txt_floresta.set_text(str(Globals.get("floresta")) + "%")
+	
 	set_process(true)
 
 #converte o tempo do contador para segundos e retorna um array
@@ -55,9 +57,12 @@ func _converte_seg_min(tempo_em_seg):
 func _process(delta):
 	var res_tempo = _converte_seg_min(int(tempo.get_time_left()))
 	txt_tempo.set_text( str( " %02d : %02d" % [res_tempo[0], res_tempo[1]] ) )
-	txt_floresta.set_text("area preservada: %.1f" % [Globals.get("floresta")] + "%")
-	txt_aeronaves.set_text("aeronaves: " + str(qnt_aeronave))
-	txt_agentes.set_text("agentes: " + str(qnt_agente))
+	#TODO mudar a cor pra vermelho quando chegar em 1min
+	if tempo.get_time_left() < 60:
+		txt_tempo.add_color_override("font_color", Color(1,0,0))
+	txt_floresta.set_text("%.1f" % [Globals.get("floresta")] + "%")
+	txt_aeronaves.set_text(str(qnt_aeronave))
+	txt_agentes.set_text(str(qnt_agente))
 
 func _on_solicitar_Helicoptero_pressed():
 	var helicoptero = cena_helicoptero.instance()
@@ -70,7 +75,8 @@ func _on_solicitar_Helicoptero_pressed():
 		else:
 			position_H = helicoptero.get_pos()
 		dinheiro -= helicoptero.get_valor()
-		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+		txt_dinheiro.set_text(str(dinheiro))
+		qnt_agente -= 4
 	else:
 		txt_mensagem.set_text("É necessário $1000 e 4 agentes para solicitar um Helicóptero")
 		get_node("HUD/Panel/MensagemTimer").start()
@@ -86,7 +92,8 @@ func _on_solicitar_Veiculo_pressed():
 		else:
 			position_V = veiculo.get_pos()
 		dinheiro -= veiculo.get_valor()
-		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+		txt_dinheiro.set_text(str(dinheiro))
+		qnt_agente -= 2
 	else:
 		txt_mensagem.set_text("É necessário $500 e 2 agentes para solicitar um Helicóptero")
 		get_node("HUD/Panel/MensagemTimer").start()
@@ -94,7 +101,7 @@ func _on_solicitar_Veiculo_pressed():
 func _on_solicitar_Agente_pressed():
 	if dinheiro >= 100:
 		dinheiro -= 100
-		txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+		txt_dinheiro.set_text(str(dinheiro))
 		qnt_agente += 1
 	else:
 		txt_mensagem.set_text("É necessário $100 para solicitar um agente")
@@ -123,7 +130,7 @@ func _on_ButtonUpgrade_pressed():
 				node.set_veloc(node.get_veloc() + 20)
 				get_node("HUD/Panel H/Label").set_text("Velocidade: " + str(node.get_veloc()))
 				dinheiro -= 750
-				txt_dinheiro.set_text("dinheiro disponivel: " + str(dinheiro))
+				txt_dinheiro.set_text(str(dinheiro))
 
 func _on_sair_pressed():
 	get_node("HUD/Panel H").set("visibility/visible", false)

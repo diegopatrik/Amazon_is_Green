@@ -1,13 +1,20 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Base.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
-[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=5]
-[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=6]
-[ext_resource path="res://Scenes/tilesetfog.tres" type="TileSet" id=7]
-[ext_resource path="res://Scripts/Fog.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/icons/money-bag-with-dollar-symbol.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/icons/helicopter.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/icons/tree.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/icons/pickup.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/icons/policeman.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/menuinferior2.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/menuinferior.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=11]
+[ext_resource path="res://addons/swipe-detector/swipe_detector.gd" type="Script" id=12]
+[ext_resource path="res://addons/swipe-detector/icon.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/tilesetfog.tres" type="TileSet" id=14]
+[ext_resource path="res://Scripts/Fog.gd" type="Script" id=15]
 
 [node name="Main" type="Node"]
 
@@ -49,62 +56,114 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="Icones" type="Node2D" parent="HUD"]
+
+[node name="icon_dinheiro" type="Sprite" parent="HUD/Icones"]
+
+transform/pos = Vector2( 64.1529, 43.1424 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
+
+[node name="icon_helicoptero" type="Sprite" parent="HUD/Icones"]
+
+transform/pos = Vector2( 190.741, 44.5764 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 5 )
+
+[node name="icon_arvore" type="Sprite" parent="HUD/Icones"]
+
+transform/pos = Vector2( 128.843, 44.2326 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 6 )
+
+[node name="icon_veiculo" type="Sprite" parent="HUD/Icones"]
+
+transform/pos = Vector2( 257.085, 44.8447 )
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 7 )
+
+[node name="icon_agente" type="Sprite" parent="HUD/Icones"]
+
+transform/pos = Vector2( 320.91, 40.8406 )
+transform/scale = Vector2( 0.14, 0.14 )
+texture = ExtResource( 8 )
+
 [node name="Dinheiro" type="Label" parent="HUD"]
 
+rect/scale = Vector2( 1.2, 1.2 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 21.0
-margin/top = 20.0
-margin/right = 156.0
-margin/bottom = 34.0
-text = "dinheiro disponível: "
+margin/left = 46.0
+margin/top = 68.0
+margin/right = 78.0
+margin/bottom = 82.0
+text = "0000"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Floresta" type="Label" parent="HUD"]
 
+rect/scale = Vector2( 1.2, 1.2 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 21.0
-margin/top = 48.0
-margin/right = 153.0
-margin/bottom = 62.0
-text = "area preservada:"
+margin/left = 104.0
+margin/top = 68.0
+margin/right = 140.0
+margin/bottom = 82.0
+text = "100%"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Aeronaves" type="Label" parent="HUD"]
 
+rect/scale = Vector2( 1.2, 1.2 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 21.0
-margin/top = 76.0
-margin/right = 153.0
-margin/bottom = 90.0
-text = "aeronaves: "
+margin/left = 189.0
+margin/top = 68.0
+margin/right = 197.0
+margin/bottom = 82.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Veiculos" type="Label" parent="HUD"]
+
+rect/scale = Vector2( 1.2, 1.2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 253.0
+margin/top = 68.0
+margin/right = 261.0
+margin/bottom = 82.0
+text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Agentes" type="Label" parent="HUD"]
 
+rect/scale = Vector2( 1.2, 1.2 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 19.0
-margin/top = 104.0
-margin/right = 151.0
-margin/bottom = 118.0
-text = "agentes: "
+margin/left = 316.0
+margin/top = 68.0
+margin/right = 324.0
+margin/bottom = 82.0
+text = "0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -115,16 +174,139 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 964.0
+margin/left = 970.0
 margin/top = 14.0
-margin/right = 1004.0
+margin/right = 1006.0
 margin/bottom = 28.0
+text = "00:00"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="solicitar_H" type="TextureButton" parent="HUD"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 322.0
+margin/top = 450.0
+margin/right = 450.0
+margin/bottom = 578.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="Sprite" type="Sprite" parent="HUD/solicitar_H"]
+
+transform/pos = Vector2( 60.4449, 58.8073 )
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="HUD/solicitar_H"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 28.0
+margin/top = 15.0
+margin/right = 103.0
+margin/bottom = 29.0
+text = "Helicóptero"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="solicitar_V" type="TextureButton" parent="HUD"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 448.0
+margin/top = 450.0
+margin/right = 576.0
+margin/bottom = 578.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="Sprite" type="Sprite" parent="HUD/solicitar_V"]
+
+transform/pos = Vector2( 61.3044, 61.1007 )
+transform/scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="HUD/solicitar_V"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 41.0
+margin/top = 16.0
+margin/right = 88.0
+margin/bottom = 30.0
+text = "Veículo"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="solicitar_A" type="TextureButton" parent="HUD"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 575.0
+margin/top = 450.0
+margin/right = 703.0
+margin/bottom = 578.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
+params/resize_mode = 0
+params/scale = Vector2( 0.5, 0.5 )
+params/stretch_mode = 0
+
+[node name="Sprite" type="Sprite" parent="HUD/solicitar_A"]
+
+transform/pos = Vector2( 64.548, 60.5683 )
+transform/scale = Vector2( 0.219731, 0.219289 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="HUD/solicitar_A"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 42.0
+margin/top = 15.0
+margin/right = 87.0
+margin/bottom = 29.0
+text = "Agente"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Panel" type="Panel" parent="HUD"]
 
+editor/display_folded = true
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -136,6 +318,7 @@ margin/bottom = 566.0
 
 [node name="solicitar_Helicoptero" type="Button" parent="HUD/Panel"]
 
+visibility/visible = false
 visibility/opacity = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -153,6 +336,7 @@ flat = false
 
 [node name="solicitar_Veiculo" type="Button" parent="HUD/Panel"]
 
+visibility/visible = false
 visibility/opacity = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -170,6 +354,7 @@ flat = false
 
 [node name="solicitar_Agente" type="Button" parent="HUD/Panel"]
 
+visibility/visible = false
 visibility/opacity = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -187,6 +372,7 @@ flat = false
 
 [node name="sair" type="Button" parent="HUD/Panel"]
 
+visibility/visible = false
 visibility/opacity = 2.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -216,9 +402,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 287.0
-margin/top = 440.0
+margin/top = 433.0
 margin/right = 327.0
-margin/bottom = 454.0
+margin/bottom = 447.0
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -243,6 +429,7 @@ flat = false
 
 [node name="Panel H" type="Panel" parent="HUD"]
 
+editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -321,13 +508,13 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-script/script = ExtResource( 4 )
+script/script = ExtResource( 11 )
 
 [node name="SwipeDetector" type="Node" parent="Camera2D"]
 
-script/script = ExtResource( 5 )
+script/script = ExtResource( 12 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 13 )
 }
 detect_gesture = true
 process_method = null
@@ -360,7 +547,7 @@ autostart = true
 z/z = 1
 z/relative = false
 mode = 0
-tile_set = ExtResource( 7 )
+tile_set = ExtResource( 14 )
 cell/size = Vector2( 48, 48 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -374,7 +561,10 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray(  )
-script/script = ExtResource( 8 )
+script/script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="pressed" from="HUD/Panel/solicitar_Helicoptero" to="." method="_on_solicitar_Helicoptero_pressed"]
 
